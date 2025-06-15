@@ -1,0 +1,184 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #a18cd1, #fbc2eb);
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+h1 {
+  color: #4b0082; /* Indigo gelap */
+  margin-bottom: 15px;
+  font-size: 2.8em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+p {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-bottom: 30px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #6a0dad; /* Ungu gelap */
+  background-color: #f3e5f5; /* Lavender muda */
+  padding: 10px 25px;
+  border-radius: 10px;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.game-info span {
+  color: #8a2be2; /* Blue Violet */
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolom */
+  grid-gap: 20px; /* Jarak antar lubang */
+  background-color: #795548; /* Warna tanah/kayu */
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
+  margin: 0 auto 30px auto;
+  width: fit-content; /* Sesuaikan lebar dengan konten */
+  max-width: 100%; /* Batasi lebar agar tidak melebihi container */
+}
+
+.hole {
+  width: 120px; /* Ukuran lubang */
+  height: 120px;
+  background-color: #a1887f; /* Warna lubang */
+  border-radius: 50%; /* Bentuk bulat */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Mole akan muncul dari bawah */
+  overflow: hidden; /* Sembunyikan bagian mole yang tidak terlihat */
+  position: relative;
+  box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* Menunjukkan bisa diklik */
+}
+
+.mole {
+  width: 90px;
+  height: 90px;
+  background-color: #8b4513; /* Warna mole (cokelat) */
+  border-radius: 50%;
+  position: absolute;
+  bottom: -100%; /* Sembunyikan di bawah lubang */
+  transition: bottom 0.2s ease-out; /* Animasi muncul */
+  pointer-events: none; /* Mole tidak bisa diklik langsung, hanya lubang */
+  display: flex; /* Untuk menempatkan emoji di tengah */
+  justify-content: center;
+  align-items: center;
+  font-size: 3em; /* Ukuran emoji tikus tanah */
+  color: white; /* Warna emoji tikus tanah */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.mole.up {
+  bottom: 5px; /* Posisi muncul */
+  pointer-events: auto; /* Mole bisa diklik saat muncul */
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #8a2be2; /* Blue Violet */
+  color: white;
+  font-size: 1.3em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #6a0dad; /* Ungu gelap */
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+#message {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #dc3545; /* Merah untuk game over */
+  margin-top: 25px;
+  min-height: 1.6em;
+}
+
+/* Responsivitas */
+@media (max-width: 700px) {
+  .game-board {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom di layar menengah */
+    grid-gap: 15px;
+    padding: 20px;
+  }
+  .hole {
+    width: 100px;
+    height: 100px;
+  }
+  .mole {
+    width: 75px;
+    height: 75px;
+    font-size: 2.5em;
+  }
+  h1 {
+    font-size: 2.2em;
+  }
+  .game-info {
+    font-size: 1.2em;
+  }
+  button {
+    padding: 12px 25px;
+    font-size: 1.1em;
+  }
+  #message {
+    font-size: 1.4em;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-board {
+    grid-template-columns: repeat(2, 1fr); /* Tetap 2 kolom */
+    grid-gap: 10px;
+    padding: 15px;
+  }
+  .hole {
+    width: 80px;
+    height: 80px;
+  }
+  .mole {
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+  }
+  .container {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+}
